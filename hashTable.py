@@ -1,14 +1,10 @@
-# Name:  - Nida Chacar-Palubinskas <br>
-# Peers:  - N/A <br>
-# References:  - https://www.cs.hmc.edu/~geoff/classes/hmc.cs070.200101/homework10/hashfuncs.html
 #https://www.geeksforgeeks.org/what-are-hash-functions-and-how-to-choose-a-good-hash-function/
 #https://www.geeksforgeeks.org/python-linked-list/
 #https://www.geeksforgeeks.org/implementation-of-hash-table-in-python-using-separate-chaining/<br>
 import math
 import time
-import csv          # Used to read a .csv file.
+import csv  
 
-### DO NOT EDIT ###
 def new_array(size: int):
     """ Creates a new array of a given size.
     :param size: (int) the number of 0s you want in the array
@@ -40,13 +36,8 @@ class HashNode:
         """ Returns a string representation of the object.
         :return : (str) a string description of the HashNode object.
         """
-        return "{key:" + str(self.key) + ", value:" + self.value + "}"     
-### END OF DO NOT EDIT###
+        return "{key:" + str(self.key) + ", value:" + self.value + "}"    
 
-
-
-
-# Hint: create a linked list class here...
 class LinkedList:
     """Class to instantiate linked lists, with a head and connected nodes.
 
@@ -306,7 +297,7 @@ class HashTable:
 
 def main():
     """
-    Creates a HashTable with nodes from hwk4-people.csv
+    Creates a HashTable with nodes from people.csv
     Takes user input to run insert(), getValue(), remove(), print(), isOverLoadFactor(), reHash(), or quit
     """
     # You should update these three values as you test your implementation.
@@ -315,8 +306,7 @@ def main():
     initial_num_to_add = 50
 
     hash_table = HashTable(initial_bucket_size, hash_to_test)
-    # Users/nida/smithassignments/csc252/hwk4/
-    with open('hwk4-people.csv') as csv_file:    
+    with open('people.csv') as csv_file:    
         csv_reader = csv.reader(csv_file, delimiter=',')
         header = csv_reader.__next__()
         for row_iterator in range(initial_num_to_add):
@@ -370,7 +360,7 @@ def main():
 
 def profilerMain():
     """
-    Creates a HashTable with nodes from hwk4-people.csv
+    Creates a HashTable with nodes from people.csv
     Loops through the HashTable and times how long different functions take to run
     """
     # You should update these three values as you profile your implementation.
@@ -381,8 +371,7 @@ def profilerMain():
     for i in range(0,5):
         for i in range(0, num_hash_implemented):        
             hash_table = HashTable(initial_bucket_size, i)
-            #Users/nida/smithassignments/csc252/hwk4/hwk4-people.csv
-            with open('hwk4-people.csv') as csv_file:    
+            with open('people.csv') as csv_file:    
                 csv_reader = csv.reader(csv_file, delimiter=',')
                 header = csv_reader.__next__()
                 for row_iterator in range(initial_num_to_add):
@@ -390,9 +379,6 @@ def profilerMain():
                     hash_table.insert(int(row[0]),row[1])
                 print("Hash Map", i, "Initialized")
                 start_time_create = time.time()    # Get start Time.
-                #### Start of code you want to profile ####
-
-                # Add/Edit code to profile
                 
                 row = csv_reader.__next__()
                 #hash_table.reHash()
